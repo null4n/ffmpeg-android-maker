@@ -31,7 +31,7 @@ done
 
 # Referencing dependencies without pkgconfig
 DEP_CFLAGS="-I${BUILD_DIR_EXTERNAL}/${ANDROID_ABI}/include"
-DEP_LD_FLAGS="-L${BUILD_DIR_EXTERNAL}/${ANDROID_ABI}/lib $FFMPEG_EXTRA_LD_FLAGS"
+DEP_LD_FLAGS=`echo -n "-L${BUILD_DIR_EXTERNAL}/${ANDROID_ABI}/lib $FFMPEG_EXTRA_LD_FLAGS"|sed "s/ -lm//g"&&echo " -lm"`
 
 ./configure \
   --prefix=${BUILD_DIR_FFMPEG}/${ANDROID_ABI} \
@@ -52,6 +52,9 @@ DEP_LD_FLAGS="-L${BUILD_DIR_EXTERNAL}/${ANDROID_ABI}/lib $FFMPEG_EXTRA_LD_FLAGS"
   --disable-shared \
   --enable-static \
   --disable-vulkan \
+  --disable-symver \
+  --enable-pic \
+  --enable-gray \
   --enable-jni \
   --enable-mediacodec \
   --pkg-config=${PKG_CONFIG_EXECUTABLE} \
