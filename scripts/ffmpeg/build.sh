@@ -52,6 +52,7 @@ DEP_LD_FLAGS=`echo -n "-L${BUILD_DIR_EXTERNAL}/${ANDROID_ABI}/lib $FFMPEG_EXTRA_
   --disable-shared \
   --enable-static \
   --disable-vulkan \
+  --disable-debug \
   --disable-symver \
   --enable-pic \
   --enable-gray \
