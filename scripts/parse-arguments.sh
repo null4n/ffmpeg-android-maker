@@ -12,6 +12,7 @@ SOURCE_TYPE=TAR
 SOURCE_VALUE=6.0
 EXTERNAL_LIBRARIES=()
 FFMPEG_GPL_ENABLED=false
+FFMPEG_NONFREE_ENABLED=false
 
 # All FREE libraries that are supported
 SUPPORTED_LIBRARIES_FREE=(
@@ -118,7 +119,11 @@ for argument in "$@"; do
     ;;
   --enable-libbluray | -bluray)
     EXTERNAL_LIBRARIES+=("libbluray")
-    ;; 
+    ;;
+  --enable-libfdk-aac | -fdk-aac)
+    EXTERNAL_LIBRARIES+=("libfdkaac")
+    FFMPEG_NONFREE_ENABLED=true
+    ;;
   --enable-all-free | -all-free)
     EXTERNAL_LIBRARIES+=" ${SUPPORTED_LIBRARIES_FREE[@]}"
     ;;

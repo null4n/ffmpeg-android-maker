@@ -14,11 +14,19 @@ if [ "$FFMPEG_GPL_ENABLED" = true ] ; then
     EXTRA_BUILD_CONFIGURATION_FLAGS="$EXTRA_BUILD_CONFIGURATION_FLAGS --enable-gpl"
 fi
 
+if [ "$FFMPEG_NONFREE_ENABLED" = true ] ; then
+    EXTRA_BUILD_CONFIGURATION_FLAGS="$EXTRA_BUILD_CONFIGURATION_FLAGS --enable-nonfree"
+fi
+
 # Preparing flags for enabling requested libraries
 ADDITIONAL_COMPONENTS=
 for LIBARY_NAME in ${FFMPEG_EXTERNAL_LIBRARIES[@]}
 do
-  ADDITIONAL_COMPONENTS+=" --enable-$LIBARY_NAME"
+  if [ "$LIBARY_NAME" = "libfdkaac" ] ; then
+      ADDITIONAL_COMPONENTS+=" --enable-libfdk-aac"
+  else
+      ADDITIONAL_COMPONENTS+=" --enable-$LIBARY_NAME"
+  fi
 done
 
 # Referencing dependencies without pkgconfig
