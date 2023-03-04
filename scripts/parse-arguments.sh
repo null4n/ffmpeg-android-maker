@@ -35,6 +35,12 @@ SUPPORTED_LIBRARIES_GPL=(
   "libx264"
 )
 
+# All GPL libraries that are supported
+SUPPORTED_LIBRARIES_BSD=(
+  "libogg"
+  "libvorbis"
+)
+
 for argument in "$@"; do
   case $argument in
   # Build for only specified ABIs (separated by comma)
@@ -124,12 +130,19 @@ for argument in "$@"; do
     EXTERNAL_LIBRARIES+=("libfdkaac")
     FFMPEG_NONFREE_ENABLED=true
     ;;
+  --enable-libvorbis | -vorbis)
+    EXTERNAL_LIBRARIES+=("libvorbis")
+    EXTERNAL_LIBRARIES+=("libogg")
+    ;;
   --enable-all-free | -all-free)
     EXTERNAL_LIBRARIES+=" ${SUPPORTED_LIBRARIES_FREE[@]}"
     ;;
   --enable-all-gpl | -all-gpl)
     EXTERNAL_LIBRARIES+=" ${SUPPORTED_LIBRARIES_GPL[@]}"
     FFMPEG_GPL_ENABLED=true
+    ;;
+  --enable-all-bsd | -all-bsd)
+    EXTERNAL_LIBRARIES+=" ${SUPPORTED_LIBRARIES_BSD[@]}"
     ;;
   *)
     echo "Unknown argument $argument"

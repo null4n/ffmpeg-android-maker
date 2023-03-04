@@ -24,7 +24,7 @@ for LIBARY_NAME in ${FFMPEG_EXTERNAL_LIBRARIES[@]}
 do
   if [ "$LIBARY_NAME" = "libfdkaac" ] ; then
       ADDITIONAL_COMPONENTS+=" --enable-libfdk-aac"
-  else
+  elif [ "$LIBARY_NAME" != "libogg" ] ; then
       ADDITIONAL_COMPONENTS+=" --enable-$LIBARY_NAME"
   fi
 done
