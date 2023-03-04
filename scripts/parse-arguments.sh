@@ -16,6 +16,7 @@ FFMPEG_NONFREE_ENABLED=false
 
 # All FREE libraries that are supported
 SUPPORTED_LIBRARIES_FREE=(
+  "harfbuzz"
   "libaom"
   "libdav1d"
   "libmp3lame"
@@ -28,6 +29,7 @@ SUPPORTED_LIBRARIES_FREE=(
   "libfribidi"
   "mbedtls"
   "libbluray"
+  "libass"
 )
 
 # All GPL libraries that are supported
@@ -133,6 +135,10 @@ for argument in "$@"; do
   --enable-libvorbis | -vorbis)
     EXTERNAL_LIBRARIES+=("libvorbis")
     EXTERNAL_LIBRARIES+=("libogg")
+    ;;
+  --enable-libass | -ass)
+    EXTERNAL_LIBRARIES+=("harfbuzz")
+    EXTERNAL_LIBRARIES+=("libass")
     ;;
   --enable-all-free | -all-free)
     EXTERNAL_LIBRARIES+=" ${SUPPORTED_LIBRARIES_FREE[@]}"
