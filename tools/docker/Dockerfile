@@ -33,6 +33,7 @@ RUN apt-get --allow-releaseinfo-change update && apt-get install -y --no-install
   pkg-config \
   make \
   git \
+  gtk-doc-tools \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
