@@ -118,7 +118,8 @@ do
     cd ${BASE_DIR}
   done
 
-  checkTextRelocations || exit 1
+  #No need to check Text Relocations in static build
+  #checkTextRelocations || exit 1
 
   prepareOutput
 done
