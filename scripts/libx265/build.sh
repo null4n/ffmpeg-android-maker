@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 cd source
+#Remove pthread dependence
+sed -i "s/list(APPEND PLATFORM_LIBS pthread)//" CMakeLists.txt
+
 CMAKE_BUILD_DIR=x265_build_${ANDROID_ABI}
 rm -rf ${CMAKE_BUILD_DIR}
 mkdir ${CMAKE_BUILD_DIR}
