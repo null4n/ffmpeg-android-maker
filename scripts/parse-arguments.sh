@@ -35,6 +35,7 @@ SUPPORTED_LIBRARIES_FREE=(
 # All GPL libraries that are supported
 SUPPORTED_LIBRARIES_GPL=(
   "libx264"
+  "libx265"
 )
 
 # All GPL libraries that are supported
@@ -120,6 +121,10 @@ for argument in "$@"; do
     ;;
   --enable-libx264 | -x264)
     EXTERNAL_LIBRARIES+=("libx264")
+    FFMPEG_GPL_ENABLED=true
+    ;;
+  --enable-libx265 | -x265)
+    EXTERNAL_LIBRARIES+=("libx265")
     FFMPEG_GPL_ENABLED=true
     ;;
   --enable-mbedtls | -mbedtls)
