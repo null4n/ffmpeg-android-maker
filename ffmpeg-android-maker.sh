@@ -121,5 +121,6 @@ do
   #No need to check Text Relocations in static build
   #checkTextRelocations || exit 1
 
-  prepareOutput
+  #Only need binary
+  #prepareOutput
 done
