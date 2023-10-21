@@ -18,7 +18,7 @@ jobs:
         run: |
           export ANDROID_SDK_HOME=$ANDROID_HOME
           export ANDROID_NDK_HOME=$ANDROID_NDK
-          ./ffmpeg-android-maker.sh -all-free -x264 -all-bsd -fdk-aac -android=21 -abis=${{ matrix.abi }}
+          ./ffmpeg-android-maker.sh -all-free -x264 -all-bsd -fdk-aac -android=30 -abis=${{ matrix.abi }}
 
       - name: upload ffmpeg
         uses: actions/upload-artifact@v3
